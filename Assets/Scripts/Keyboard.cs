@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Keyboard : MonoBehaviour {
 
-	private string[] letters = new string[] {"a", "b", "c","d","e","f"};
+	private string[] letters = new string[] {"a", "b", "c","d","e","f",".","@"};
 	public Letter btnprefab;
 
 	private Letter btn;
@@ -15,7 +15,7 @@ public class Keyboard : MonoBehaviour {
 		for(int i = 0; i < letters.Length; i++){
 			string val = letters[i];
 			btn = Instantiate(btnprefab) as Letter;
-			btn.transform.parent = gameObject.transform;
+			btn.transform.SetParent(gameObject.transform);
 			btn.transform.localPosition = new Vector2(i* 90+10,100);
 			btn.GetComponentInParent<Button>().GetComponentInChildren<Text>().text = val;
 			btn.GetComponent<Letter>().value = val;

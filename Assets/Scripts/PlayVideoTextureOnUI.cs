@@ -13,6 +13,8 @@ public class PlayVideoTextureOnUI : MonoBehaviour {
 
 	public RectTransform staticPicture;
 
+	public InputField emailAddressInput;
+
 	private int resWidth = 3840;
 	private int resHeight = 2160;
 	public Color32[] data;
@@ -42,6 +44,7 @@ public class PlayVideoTextureOnUI : MonoBehaviour {
 	}
 
 	public void Record(){
+		Debug.Log ("REcord action");
 		snap = new Texture2D(webcamTexture.width, webcamTexture.height);
 		snap.SetPixels(webcamTexture.GetPixels());
 		snap.Apply();
@@ -59,7 +62,8 @@ public class PlayVideoTextureOnUI : MonoBehaviour {
 	}
 
 	public void SavePicture(){
-		System.IO.File.WriteAllBytes("./" + Time.deltaTime.ToString() + ".png", snap.EncodeToPNG());
+		string name = emailAddressInput.text;
+		System.IO.File.WriteAllBytes("../service_nodemail/photomail/" + name + ".png", snap.EncodeToPNG());
 	}
 
 

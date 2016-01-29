@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Letter : MonoBehaviour,IPointerClickHandler {
 
 	private string myValue;
+//	public 
 
 	public string value
 	{
@@ -15,6 +16,6 @@ public class Letter : MonoBehaviour,IPointerClickHandler {
 
 
 	public void OnPointerClick(PointerEventData eventData){
-		Debug.Log (myValue);
+//		gameObject.GetComponentInParent<Keyboard>().GetComponentInParent<MainManager>().WriteChar(myValue);
 	}
 }
