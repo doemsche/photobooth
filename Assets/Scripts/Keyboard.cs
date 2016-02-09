@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Keyboard : MonoBehaviour {
 
+	public Button shiftButton;
+
 	public RectTransform row1;
 	public RectTransform row2;
 	public RectTransform row3;
@@ -14,7 +16,8 @@ public class Keyboard : MonoBehaviour {
 	private string[] lettersRow1 = new string[] {"a","b","c","d","e","f","g","h","i","j","k","l","m","n"};
 	private string[] lettersRow2 = new string[] {"o","p","q","r","s","t","u","v","w","x","y","z"};
 	private string[] lettersRow3 = new string[] {"@", "1","2","3","4","5","6","7","8","9",".","-"};
-	private string[] lettersRow4 = new string[] {"<", " "};
+
+	public bool shift = false;
 
 	public Letter btnprefab;
 	public MainManager mainmanager;
@@ -26,7 +29,15 @@ public class Keyboard : MonoBehaviour {
 		DrawKeyboardRow(lettersRow1,row1);
 		DrawKeyboardRow(lettersRow2,row2);
 		DrawKeyboardRow(lettersRow3,row3);
+	}
 
+	public void Shift(){
+		shift = !shift;
+		if (shift){
+			shiftButton.GetComponent<Image>().color = Color.gray;
+		} else {
+			shiftButton.GetComponent<Image>().color =  Color.white;
+		}
 	}
 
 	private void DrawKeyboardRow(string[] row, RectTransform container){

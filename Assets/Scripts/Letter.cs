@@ -14,6 +14,12 @@ public class Letter : MonoBehaviour,IPointerClickHandler {
 	}
 
 	public void OnPointerClick(PointerEventData eventData){
-		gameObject.GetComponentInParent<Keyboard>().mainmanager.WriteChar(myValue);
+		string outvalue;
+		if(gameObject.GetComponentInParent<Keyboard>().shift){
+			outvalue = myValue.ToUpper();
+		} else{
+			outvalue = myValue;
+		}
+		gameObject.GetComponentInParent<Keyboard>().mainmanager.WriteChar(outvalue);
 	}
 }
