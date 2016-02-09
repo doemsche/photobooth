@@ -42,7 +42,6 @@ public class Keyboard : MonoBehaviour {
 
 	private void DrawKeyboardRow(string[] row, RectTransform container){
 		int space = GetButtonOffset(containerWidth,row.Length);
-		Debug.Log(space);
 		for(int i = 0; i < row.Length; i++){
 			string val = row[i];				
 			btn = Instantiate(btnprefab) as Letter;

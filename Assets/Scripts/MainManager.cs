@@ -4,6 +4,7 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour {
 
@@ -67,7 +68,6 @@ public class MainManager : MonoBehaviour {
 	}
 
 	public void DelChar(){
-
 		if(activeinputfield.text.Length > 0){
 			activeinputfield.text = activeinputfield.text.Remove(activeinputfield.text.Length-1);	
 		}
@@ -75,10 +75,15 @@ public class MainManager : MonoBehaviour {
 	}
 
 	public void SendEmail(){
-		if( IsValidEmail(emailinputfield.text)){
-			Debug.Log(emailinputfield.text+ " email correct");
-			Debug.Log(messageinputfield.text);
+		if( IsValidEmail(emailinputfield.text) ){
+			videoinput.SavePicture();
 		}
+	}
+
+
+	public void Cancel(){
+		//Reset everything
+		SceneManager.LoadScene("Main");
 	}
 
 	public bool IsValidEmail(string emailaddress){

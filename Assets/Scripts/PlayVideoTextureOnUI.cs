@@ -68,7 +68,8 @@ public class PlayVideoTextureOnUI : MonoBehaviour {
 
 	public void SavePicture(){
 		string name = emailAddressInput.text;
-		System.IO.File.WriteAllBytes("../service_nodemail/photomail/" + name + ".png", snap.EncodeToPNG());
+		Debug.Log(snap);
+		System.IO.File.WriteAllBytes("/tmp/photobooth/" + name + ".png", snap.EncodeToPNG());
 	}
 
 
