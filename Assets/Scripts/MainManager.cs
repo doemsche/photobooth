@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System;
+using UnityEngine.EventSystems;
 
 public class MainManager : MonoBehaviour {
 
@@ -14,10 +15,8 @@ public class MainManager : MonoBehaviour {
 
 	public InputField activeinputfield;
 
-	private bool emailactive;
 
 	void Start(){
-		emailactive = true;
 //		Cursor.visible = false;
 	}
 
@@ -27,21 +26,10 @@ public class MainManager : MonoBehaviour {
 		}
 	}
 
-	public void SetEmailActive(){
-		Debug.Log("A");
-		//SwapActiveInputField(emailinputfield);
+	public void SetActiveInputField(InputField inputfield){
+		activeinputfield = inputfield;
 	}
 
-	public void SetMessageActive(){
-		Debug.Log(messageinputfield.GetType());
-
-		//SwapActiveInputField(messageinputfield);
-	}
-
-	public void SwapActiveInputField(InputField i){
-//		activeinputfield = i;
-		Debug.Log(i.GetType());
-	}
 
 	public void pictureOk(){
 		Debug.Log ("OK from Manager");
@@ -71,13 +59,11 @@ public class MainManager : MonoBehaviour {
 	}
 
 	public void WriteChar(string character){
-
 		activeinputfield.text += character;
-		if(IsValidEmail(activeinputfield.text)){
-			Debug.Log ("valid email");
-		} else {
-			Debug.Log("invalid email");
-		}
+	}
+
+	public void WriteSpace(){
+		activeinputfield.text += " ";
 	}
 
 	public void DelChar(){
@@ -86,6 +72,13 @@ public class MainManager : MonoBehaviour {
 			activeinputfield.text = activeinputfield.text.Remove(activeinputfield.text.Length-1);	
 		}
 		return;
+	}
+
+	public void SendEmail(){
+		if( IsValidEmail(emailinputfield.text)){
+			Debug.Log(emailinputfield.text+ " email correct");
+			Debug.Log(messageinputfield.text);
+		}
 	}
 
 	public bool IsValidEmail(string emailaddress){
