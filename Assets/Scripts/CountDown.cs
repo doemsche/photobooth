@@ -5,9 +5,9 @@ using System.Collections;
 public class CountDown : MonoBehaviour {
 
 	private ArrayList items;
-	public Image number3;
-	public Image number2;
 	public Image number1;
+	public Image number2;
+	public Image number3;
 
 	void Awake(){
 
@@ -15,9 +15,9 @@ public class CountDown : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		items = new ArrayList();
-		items.Add(number1);
-		items.Add (number2);
 		items.Add(number3);
+		items.Add (number2);
+		items.Add(number1);
 	}
 
 	public void ShowItem(int showIndex){
@@ -43,7 +43,6 @@ public class CountDown : MonoBehaviour {
 		RectTransform rt = this.GetComponentInParent<RectTransform>();
 		Color alpha = new Color(1,1,1,0);
 		rt.GetComponent<Image>().color = alpha;
-
 	}
 	
 }

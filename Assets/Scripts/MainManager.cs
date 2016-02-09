@@ -9,16 +9,29 @@ public class MainManager : MonoBehaviour {
 	public InputField inputfield;
 	public PlayVideoTextureOnUI videoinput;
 	public CountDown countdown;
-	public Keyboard keyboard;
+	public RectTransform keyboardpanel;
 
 	void Start(){
-
+//		Cursor.visible = false;
 	}
 
 	void Update(){
 		if(Input.GetKeyDown(KeyCode.Space)){
 			StartCoroutine(CountDown());
 		}
+	}
+
+	public void pictureOk(){
+		Debug.Log ("OK from Manager");
+		ShowKeyboardDialog();
+	}
+
+	public void  pictureNotOk(){
+		Debug.Log("Not okay from mgr");
+	}
+
+	public void ShowKeyboardDialog(){
+		keyboardpanel.gameObject.SetActive(true);
 	}
 
 	private IEnumerator CountDown(){
@@ -39,10 +52,10 @@ public class MainManager : MonoBehaviour {
 	}
 
 	public void WriteChar(string character){
-		if(character == "d"){
-			inputfield.text = inputfield.text.Remove(inputfield.text.Length-1);
-			return;
-		}
+//		if(character == "d"){
+//			inputfield.text = inputfield.text.Remove(inputfield.text.Length-1);
+//			return;
+//		}
 		inputfield.text += character;
 		if(IsValidEmail(inputfield.text)){
 			Debug.Log ("valid email");

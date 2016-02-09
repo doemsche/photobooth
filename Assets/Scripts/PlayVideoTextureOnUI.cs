@@ -15,6 +15,8 @@ public class PlayVideoTextureOnUI : MonoBehaviour {
 
 	public InputField emailAddressInput;
 
+	public RectTransform confirm;
+
 	private int resWidth = 3840;
 	private int resHeight = 2160;
 	public Color32[] data;
@@ -51,9 +53,12 @@ public class PlayVideoTextureOnUI : MonoBehaviour {
 
 		staticPicture.GetComponent<RawImage>().texture = snap;
 
-		staticPicture.transform.Translate(0,1154,0);
+		staticPicture.transform.Translate(-2114,0,0);
+		Debug.Log (confirm);
+		confirm.gameObject.SetActive(true);
+//		confirm.GetComponent<RectTransform>().setA
 		//	System.IO.File.WriteAllBytes("./" + Time.deltaTime.ToString() + ".png", snap.EncodeToPNG());
-
+		Debug.Log ("execute show gui here");
 
 //		data = new Color32[webcamTexture.width * webcamTexture.height];
 //		Debug.Log (videoInput.GetType ());
